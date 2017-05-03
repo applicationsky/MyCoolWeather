@@ -13,6 +13,7 @@
 要使用\<br>  
 
 如果希望文字变得高亮，例如 `这样` . 请 `使用` 双引号 `哈哈`
+
 [我的博客](http://blog.csdn.net/guodongxiaren "悬停显示")
 
 * 昵称：果冻虾仁  
@@ -26,6 +27,7 @@
         * Python 
 	
 缩进的含义还是比较明显的:	
+
 >数据结构  
 >>树  
 >>>二叉树  
@@ -43,15 +45,19 @@
 图片超链接
 
 [![baidu]](http://baidu.com)  
-[baidu]:http://www.baidu.com/img/bdlogo.gif "百度Logo" 
+[baidu]:http://www.baidu.com/img/bdlogo.gif "百度Logo" ]
 
 插入代码
 
-···Java
+```Java
 public static void main(String[] args){}//Java
 
 ```C
 int main(int argc,char* argv)//C
+
+
+我其实不信的，这个Readme还能写出花来
+
 
 
 
