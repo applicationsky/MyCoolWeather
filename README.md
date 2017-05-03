@@ -52,6 +52,7 @@
 ```Java
 public static void main(String[] args){}//Java
 
+
 ```C
 int main(int argc,char* argv)//C
 
