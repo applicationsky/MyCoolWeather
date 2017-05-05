@@ -1,9 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <litepal>
     <dbname value="my_cool_weather" />
         <version value="1" />
     <list>
-        <mappin class="cn.oeaom.CoolWeather.JavaBeanForDB.City" />
-        <mappin class="cn.oeaom.CoolWeather.JavaBeanForDB.Province" />
-        <mappin class="cn.oeaom.CoolWeather.JavaBeanForDB.Country" />
+        <mapping class="cn.oeaom.CoolWeather.JavaBeanForDB.City" />
+        <mapping class="cn.oeaom.CoolWeather.JavaBeanForDB.Province" />
+        <mapping class="cn.oeaom.CoolWeather.JavaBeanForDB.Country" />
     </list>
 </litepal>

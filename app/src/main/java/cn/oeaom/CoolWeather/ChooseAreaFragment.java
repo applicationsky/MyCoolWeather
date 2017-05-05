@@ -2,7 +2,7 @@ package cn.oeaom.CoolWeather;
 
 import android.animation.Animator;
 import android.app.Activity;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.app.LoaderManager;
 import android.app.ProgressDialog;
 import android.app.SharedElementCallback;
@@ -26,10 +26,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.litepal.crud.DataSupport;
 
 import java.io.FileDescriptor;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +39,11 @@ import java.util.List;
 import cn.oeaom.CoolWeather.JavaBeanForDB.City;
 import cn.oeaom.CoolWeather.JavaBeanForDB.Country;
 import cn.oeaom.CoolWeather.JavaBeanForDB.Province;
+import cn.oeaom.CoolWeather.Util.HttpUtil;
+import cn.oeaom.CoolWeather.Util.Utility;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 /**
  * Created by MaiBenBen on 2017/5/5.
@@ -59,151 +66,8 @@ public class ChooseAreaFragment extends Fragment {
     private City selectedCity;
     private int currentLevel;
 
-    public ChooseAreaFragment() {
-        super();
-    }
 
-    @Override
-    public String toString() {
-        return super.toString();
-    }
 
-    @Override
-    public void setArguments(Bundle args) {
-        super.setArguments(args);
-    }
-
-    @Override
-    public void setInitialSavedState(SavedState state) {
-        super.setInitialSavedState(state);
-    }
-
-    @Override
-    public void setTargetFragment(Fragment fragment, int requestCode) {
-        super.setTargetFragment(fragment, requestCode);
-    }
-
-    @Override
-    public Context getContext() {
-        return super.getContext();
-    }
-
-    @Override
-    public void onHiddenChanged(boolean hidden) {
-        super.onHiddenChanged(hidden);
-    }
-
-    @Override
-    public void setRetainInstance(boolean retain) {
-        super.setRetainInstance(retain);
-    }
-
-    @Override
-    public void setHasOptionsMenu(boolean hasMenu) {
-        super.setHasOptionsMenu(hasMenu);
-    }
-
-    @Override
-    public void setMenuVisibility(boolean menuVisible) {
-        super.setMenuVisibility(menuVisible);
-    }
-
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-    }
-
-    @Override
-    public boolean getUserVisibleHint() {
-        return super.getUserVisibleHint();
-    }
-
-    @Override
-    public LoaderManager getLoaderManager() {
-        return super.getLoaderManager();
-    }
-
-    @Override
-    public void startActivity(Intent intent) {
-        super.startActivity(intent);
-    }
-
-    @Override
-    public void startActivity(Intent intent, Bundle options) {
-        super.startActivity(intent, options);
-    }
-
-    @Override
-    public void startActivityForResult(Intent intent, int requestCode) {
-        super.startActivityForResult(intent, requestCode);
-    }
-
-    @Override
-    public void startActivityForResult(Intent intent, int requestCode, Bundle options) {
-        super.startActivityForResult(intent, requestCode, options);
-    }
-
-    @Override
-    public void startIntentSenderForResult(IntentSender intent, int requestCode, Intent fillInIntent, int flagsMask, int flagsValues, int extraFlags, Bundle options) throws IntentSender.SendIntentException {
-        super.startIntentSenderForResult(intent, requestCode, fillInIntent, flagsMask, flagsValues, extraFlags, options);
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-    }
-
-    @Override
-    public boolean shouldShowRequestPermissionRationale(String permission) {
-        return super.shouldShowRequestPermissionRationale(permission);
-    }
-
-    @Override
-    public void onInflate(AttributeSet attrs, Bundle savedInstanceState) {
-        super.onInflate(attrs, savedInstanceState);
-    }
-
-    @Override
-    public void onInflate(Context context, AttributeSet attrs, Bundle savedInstanceState) {
-        super.onInflate(context, attrs, savedInstanceState);
-    }
-
-    @Override
-    public void onInflate(Activity activity, AttributeSet attrs, Bundle savedInstanceState) {
-        super.onInflate(activity, attrs, savedInstanceState);
-    }
-
-    @Override
-    public void onAttachFragment(Fragment childFragment) {
-        super.onAttachFragment(childFragment);
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-    }
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-    }
-
-    @Override
-    public Animator onCreateAnimator(int transit, boolean enter, int nextAnim) {
-        return super.onCreateAnimator(transit, enter, nextAnim);
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.choose_area,container,false);
@@ -216,16 +80,7 @@ public class ChooseAreaFragment extends Fragment {
         //return super.onCreateView(inflater, container, savedInstanceState);
     }
 
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-    }
 
-    @Nullable
-    @Override
-    public View getView() {
-        return super.getView();
-    }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -236,12 +91,12 @@ public class ChooseAreaFragment extends Fragment {
                 if(currentLevel==LEVEL_PROVINCE){
                     selectedProvince = provinceList.get(position);
                     //TODO
-                    // queryCities();
+                    queryCities();
                 }
                 else if(currentLevel == LEVEL_CITY){
                     selectedCity = cityList.get(position);
                     //TODO
-                    //queryCounties();
+                    queryCountries();
                 }
             }
         });
@@ -250,15 +105,15 @@ public class ChooseAreaFragment extends Fragment {
             public void onClick(View view) {
                 if(currentLevel == LEVEL_COUNTRY){
                     //TODO
-                    // /queryCities();
+                    queryCities();
                 }else if(currentLevel == LEVEL_CITY){
                     //TODO
-                    //queryProvinces();
+                    queryProvinces();
                 }
             }
         });
         //TODD
-        //queryProvinces();
+        queryProvinces();
 
     }
     private void queryProvinces(){
@@ -276,7 +131,7 @@ public class ChooseAreaFragment extends Fragment {
             currentLevel = LEVEL_PROVINCE;
         }else{
             String address = "http://guolin.tech/api/china";
-            //queryFromServer(address,"province");
+            queryFromServer(address,LEVEL_PROVINCE);
         }
     }
     private void queryCities(){
@@ -296,7 +151,7 @@ public class ChooseAreaFragment extends Fragment {
             int provinceCode = selectedProvince.getProvinceCode();
 
             String address = "http://guolin.tech/api/china/"+provinceCode;
-            //queryFromServer(address,"city");
+            queryFromServer(address,LEVEL_CITY);
         }
     }
     private void queryCountries(){
@@ -317,228 +172,84 @@ public class ChooseAreaFragment extends Fragment {
             int cityCode = selectedCity.getCityCode();
 
             String address = "http://guolin.tech/api/china/"+provinceCode+"/"+cityCode;
-            //queryFromServer(address,"city");
+            queryFromServer(address,LEVEL_COUNTRY);
         }
     }
-    
-
-    @Override
-    public void onViewStateRestored(Bundle savedInstanceState) {
-        super.onViewStateRestored(savedInstanceState);
+    private void showProgressDialog(){
+        if(progressDialog == null){
+            progressDialog = new ProgressDialog(getActivity());
+            progressDialog.setMessage("正在加载...");
+            progressDialog.setCanceledOnTouchOutside(false);
+        }
+        progressDialog.show();
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
+    private void closeProgressDialog(){
+        if(progressDialog!=null)
+        {
+            progressDialog.dismiss();
+        }
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
+    private void queryFromServer(String address,final int type)
+    {
+        showProgressDialog();
+        HttpUtil.sendOkHttpRequest(address, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            closeProgressDialog();
+                            Toast.makeText(getContext(),"加载失败",Toast.LENGTH_SHORT).show();
+                        }
+                    });
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String responseStr =  response.body().string();
+                boolean result  = false;
+                switch (type)
+                {
+                    case LEVEL_PROVINCE:{
+                        result = Utility.handleProvinceResponse(responseStr);
+                    }break;
+                    case LEVEL_CITY:{
+                        result = Utility.handleCityResponse(responseStr,selectedProvince.getId());
+                    }break;
+                    case LEVEL_COUNTRY:{
+                        result = Utility.handleCityResponse(responseStr,selectedCity.getId());
+                    }break;
+                    default:{
+
+                    }break;
+                }
+                if(result){
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            closeProgressDialog();
+                            switch (type)
+                            {
+                                case LEVEL_PROVINCE:{
+                                    queryProvinces();
+                                }break;
+                                case LEVEL_CITY:{
+                                    queryCities();
+                                }break;
+                                case LEVEL_COUNTRY:{
+                                   queryCountries();
+                                }break;
+                                default:{
+
+                                }break;
+                            }
+                        }
+                    });
+                }
+            }
+        });
     }
 
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-    }
-
-    @Override
-    public void onMultiWindowModeChanged(boolean isInMultiWindowMode) {
-        super.onMultiWindowModeChanged(isInMultiWindowMode);
-    }
-
-    @Override
-    public void onPictureInPictureModeChanged(boolean isInPictureInPictureMode) {
-        super.onPictureInPictureModeChanged(isInPictureInPictureMode);
-    }
-
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-    }
-
-    @Override
-    public void onLowMemory() {
-        super.onLowMemory();
-    }
-
-    @Override
-    public void onTrimMemory(int level) {
-        super.onTrimMemory(level);
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-    }
-
-    @Override
-    public void onPrepareOptionsMenu(Menu menu) {
-        super.onPrepareOptionsMenu(menu);
-    }
-
-    @Override
-    public void onDestroyOptionsMenu() {
-        super.onDestroyOptionsMenu();
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onOptionsMenuClosed(Menu menu) {
-        super.onOptionsMenuClosed(menu);
-    }
-
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        super.onCreateContextMenu(menu, v, menuInfo);
-    }
-
-    @Override
-    public void registerForContextMenu(View view) {
-        super.registerForContextMenu(view);
-    }
-
-    @Override
-    public void unregisterForContextMenu(View view) {
-        super.unregisterForContextMenu(view);
-    }
-
-    @Override
-    public boolean onContextItemSelected(MenuItem item) {
-        return super.onContextItemSelected(item);
-    }
-
-    @Override
-    public void setEnterSharedElementCallback(SharedElementCallback callback) {
-        super.setEnterSharedElementCallback(callback);
-    }
-
-    @Override
-    public void setExitSharedElementCallback(SharedElementCallback callback) {
-        super.setExitSharedElementCallback(callback);
-    }
-
-    @Override
-    public void setEnterTransition(Transition transition) {
-        super.setEnterTransition(transition);
-    }
-
-    @Override
-    public Transition getEnterTransition() {
-        return super.getEnterTransition();
-    }
-
-    @Override
-    public void setReturnTransition(Transition transition) {
-        super.setReturnTransition(transition);
-    }
-
-    @Override
-    public Transition getReturnTransition() {
-        return super.getReturnTransition();
-    }
-
-    @Override
-    public void setExitTransition(Transition transition) {
-        super.setExitTransition(transition);
-    }
-
-    @Override
-    public Transition getExitTransition() {
-        return super.getExitTransition();
-    }
-
-    @Override
-    public void setReenterTransition(Transition transition) {
-        super.setReenterTransition(transition);
-    }
-
-    @Override
-    public Transition getReenterTransition() {
-        return super.getReenterTransition();
-    }
-
-    @Override
-    public void setSharedElementEnterTransition(Transition transition) {
-        super.setSharedElementEnterTransition(transition);
-    }
-
-    @Override
-    public Transition getSharedElementEnterTransition() {
-        return super.getSharedElementEnterTransition();
-    }
-
-    @Override
-    public void setSharedElementReturnTransition(Transition transition) {
-        super.setSharedElementReturnTransition(transition);
-    }
-
-    @Override
-    public Transition getSharedElementReturnTransition() {
-        return super.getSharedElementReturnTransition();
-    }
-
-    @Override
-    public void setAllowEnterTransitionOverlap(boolean allow) {
-        super.setAllowEnterTransitionOverlap(allow);
-    }
-
-    @Override
-    public boolean getAllowEnterTransitionOverlap() {
-        return super.getAllowEnterTransitionOverlap();
-    }
-
-    @Override
-    public void setAllowReturnTransitionOverlap(boolean allow) {
-        super.setAllowReturnTransitionOverlap(allow);
-    }
-
-    @Override
-    public boolean getAllowReturnTransitionOverlap() {
-        return super.getAllowReturnTransitionOverlap();
-    }
-
-    @Override
-    public void dump(String prefix, FileDescriptor fd, PrintWriter writer, String[] args) {
-        super.dump(prefix, fd, writer, args);
-    }
-
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
-    }
-
-    @Override
-    protected void finalize() throws Throwable {
-        super.finalize();
-    }
 }
