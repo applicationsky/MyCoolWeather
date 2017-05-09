@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <litepal>
-    <dbname value="my_cool_weather" />
+    <dbname value="weather" />
         <version value="1" />
     <list>
         <mapping class="cn.oeaom.CoolWeather.JavaBeanForDB.City" />

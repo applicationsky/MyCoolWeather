@@ -2,6 +2,7 @@ package cn.oeaom.CoolWeather;
 
 import android.animation.Animator;
 import android.app.Activity;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v4.app.Fragment;
 import android.app.LoaderManager;
 import android.app.ProgressDialog;
@@ -29,6 +30,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.litepal.crud.DataSupport;
+import org.litepal.tablemanager.Connector;
 
 import java.io.FileDescriptor;
 import java.io.IOException;
@@ -119,7 +121,13 @@ public class ChooseAreaFragment extends Fragment {
     private void queryProvinces(){
         titleText.setText("中国");;
         backButton.setVisibility(View.GONE);
-        provinceList = DataSupport.findAll(Province.class);
+        SQLiteDatabase db = Connector.getDatabase();
+//        try{
+               provinceList = DataSupport.findAll(Province.class);
+//        }catch(RuntimeException e){
+//            e.printStackTrace();
+//        }
+
         if(provinceList.size()>0){
             dataList.clear();
             for(Province province : provinceList)
