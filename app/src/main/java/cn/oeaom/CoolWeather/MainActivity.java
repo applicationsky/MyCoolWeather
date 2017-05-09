@@ -17,7 +17,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private String Data[] = {"浙江","江苏","上海","安徽","江西","福建"};
-    private List<String> Citys;
+    //private List<String> Citys;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -1,6 +1,7 @@
 package cn.oeaom.CoolWeather;
 
 import android.animation.Animator;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v4.app.Fragment;
@@ -15,6 +16,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.transition.Transition;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -47,11 +49,13 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
+
 /**
  * Created by MaiBenBen on 2017/5/5.
  */
 
 public class ChooseAreaFragment extends Fragment {
+    private static final String TAG = "ChooseAreaFragment";
     public static final int LEVEL_PROVINCE = 0;
     public static final int LEVEL_CITY = 1;
     public static final int LEVEL_COUNTRY =2;
@@ -99,6 +103,9 @@ public class ChooseAreaFragment extends Fragment {
                     selectedCity = cityList.get(position);
                     //TODO
                     queryCountries();
+                }
+                else{
+                    Toast.makeText(getContext(),"你点击了"+dataList.get(position),Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -166,6 +173,7 @@ public class ChooseAreaFragment extends Fragment {
         titleText.setText(selectedCity.getCityName());
         backButton.setVisibility(View.VISIBLE);
         countryList = DataSupport.where("cityid = ?",String.valueOf(selectedCity.getId())).find(Country.class);
+        Log.v(TAG,"Country list size"+countryList.size());
         if(countryList.size()>0){
             dataList.clear();
             for(Country country : countryList)
@@ -180,6 +188,7 @@ public class ChooseAreaFragment extends Fragment {
             int cityCode = selectedCity.getCityCode();
 
             String address = "http://guolin.tech/api/china/"+provinceCode+"/"+cityCode;
+            Log.v(TAG,address);
             queryFromServer(address,LEVEL_COUNTRY);
         }
     }
@@ -227,7 +236,7 @@ public class ChooseAreaFragment extends Fragment {
                         result = Utility.handleCityResponse(responseStr,selectedProvince.getId());
                     }break;
                     case LEVEL_COUNTRY:{
-                        result = Utility.handleCityResponse(responseStr,selectedCity.getId());
+                        result = Utility.handleCountryResponse(responseStr,selectedCity.getId());
                     }break;
                     default:{
 
