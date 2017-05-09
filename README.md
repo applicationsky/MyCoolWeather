@@ -1,7 +1,25 @@
-﻿是书上的项目 CoolWeather
+﻿MyCoolWeather
 ====
-使用了书上的API  
+使用了guolin(书上)的API
 -------
+
+* 解决了Litepal无法写入数据库的异常:
+			原因也很出乎意料 是因为litepal配置文件中数据库的文件名太长了
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<litepal>
+    <dbname value="weather" />    <!--这里之前的代码是<dbname value="my_cool_weather" />-->
+        <version value="1" />
+    <list>
+        <mapping class="cn.oeaom.CoolWeather.JavaBeanForDB.City" />
+        <mapping class="cn.oeaom.CoolWeather.JavaBeanForDB.Province" />
+        <mapping class="cn.oeaom.CoolWeather.JavaBeanForDB.Country" />
+    </list>
+</litepal>
+```xml
+
+
+
 #一级标题  
 ##二级标题  
 ###三级标题  
@@ -16,7 +34,6 @@
 
 [我的博客](http://blog.csdn.net/guodongxiaren "悬停显示")
 
-* 昵称：果冻虾仁  
 * 别名：隔壁老王  
 * 英文名：Jelly 
 
@@ -51,11 +68,11 @@
 
 ```Java
 public static void main(String[] args){}//Java
-
+```Java
 
 ```C
 int main(int argc,char* argv)//C
-
+```C
 
 我其实不信的，这个Readme还能写出花来
 

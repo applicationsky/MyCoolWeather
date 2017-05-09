@@ -107,6 +107,7 @@ public class ChooseAreaFragment extends Fragment {
                 }
                 else{
                     Toast.makeText(getContext(),"你点击了"+dataList.get(position),Toast.LENGTH_SHORT).show();
+                    
                 }
             }
         });
@@ -170,7 +171,6 @@ public class ChooseAreaFragment extends Fragment {
             currentLevel = LEVEL_CITY;
         }else{
             int provinceCode = selectedProvince.getProvinceCode();
-
             String address = "http://guolin.tech/api/china/"+provinceCode;
             queryFromServer(address,LEVEL_CITY);
         }
