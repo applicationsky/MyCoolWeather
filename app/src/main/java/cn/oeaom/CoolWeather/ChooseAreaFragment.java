@@ -45,6 +45,7 @@ import cn.oeaom.CoolWeather.JavaBeanForDB.Country;
 import cn.oeaom.CoolWeather.JavaBeanForDB.Province;
 import cn.oeaom.CoolWeather.Util.HttpUtil;
 import cn.oeaom.CoolWeather.Util.Utility;
+import cn.oeaom.CoolWeather.Util.nameUtil;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
@@ -80,7 +81,7 @@ public class ChooseAreaFragment extends Fragment {
         titleText = (TextView)view.findViewById(R.id.title_text);
         backButton = (Button)view.findViewById(R.id.back_button);
         listView = (ListView)view.findViewById(R.id.list_view);
-        adapter = new ArrayAdapter<>(getContext(),android.R.layout.simple_list_item_1,dataList);
+        adapter = new ArrayAdapter<>(getContext(),R.layout.list_item,dataList);
         listView.setAdapter(adapter);
         return view;
         //return super.onCreateView(inflater, container, savedInstanceState);
@@ -139,7 +140,12 @@ public class ChooseAreaFragment extends Fragment {
             dataList.clear();
             for(Province province : provinceList)
             {
-                dataList.add(province.getProvinceName());
+                String name = province.getProvinceName();
+
+                name = nameUtil.getProvinceName(name);
+
+                dataList.add(name);
+
             }
             adapter.notifyDataSetChanged();
             listView.setSelection(0);
@@ -150,7 +156,7 @@ public class ChooseAreaFragment extends Fragment {
         }
     }
     private void queryCities(){
-        titleText.setText(selectedProvince.getProvinceName());;
+        titleText.setText(nameUtil.getProvinceName(selectedProvince.getProvinceName()));;
         backButton.setVisibility(View.VISIBLE);
         cityList = DataSupport.where("provinceid = ?",String.valueOf(selectedProvince.getId())).find(City.class);
         if(cityList.size()>0){
