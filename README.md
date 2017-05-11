@@ -16,7 +16,7 @@
         <mapping class="cn.oeaom.CoolWeather.JavaBeanForDB.Country" />
     </list>
 </litepal>
-```xml
+```
 
 
 
