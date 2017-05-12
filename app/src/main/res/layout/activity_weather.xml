@@ -41,6 +41,7 @@
                     android:background="@drawable/ic_home"
                     />
             </RelativeLayout>
+            
         </LinearLayout>
         <fragment
             android:id="@+id/choose_area_fragment"

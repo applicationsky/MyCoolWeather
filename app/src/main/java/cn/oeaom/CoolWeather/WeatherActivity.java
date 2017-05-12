@@ -18,7 +18,7 @@ import org.w3c.dom.Text;
 public class WeatherActivity extends AppCompatActivity {
     private static final String TAG = "WeatherActivity";
     public DrawerLayout drawerLayout;
-
+    public TextView tvTitle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +38,7 @@ public class WeatherActivity extends AppCompatActivity {
         //获取这个Intent对象的Extra中对应键的值
         String weatherId=intent.getStringExtra("weather_id");
         String CountryName = intent.getStringExtra("CountryName");
-        TextView tvTitle = (TextView)findViewById(R.id.title_text_weather);
+         tvTitle = (TextView)findViewById(R.id.title_text_weather);
         //tvTitle.setText(weatherId);
         tvTitle.setText(CountryName);
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
@@ -55,6 +55,8 @@ public class WeatherActivity extends AppCompatActivity {
                 }
             });
     }
-    
+    public void requestWeather(final String weatherId){
+        tvTitle.setText(weatherId);
+    }
 
 }
