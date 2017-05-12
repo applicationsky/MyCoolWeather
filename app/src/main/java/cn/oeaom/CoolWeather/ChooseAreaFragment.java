@@ -40,6 +40,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.oeaom.CoolWeather.GSON.Weather;
 import cn.oeaom.CoolWeather.JavaBeanForDB.City;
 import cn.oeaom.CoolWeather.JavaBeanForDB.Country;
 import cn.oeaom.CoolWeather.JavaBeanForDB.Province;
@@ -107,7 +108,21 @@ public class ChooseAreaFragment extends Fragment {
                 }
                 else{
                     Toast.makeText(getContext(),"你点击了"+dataList.get(position),Toast.LENGTH_SHORT).show();
-                    
+                    String weatherId = countryList.get(position).getWeatherId();
+                    String CountryName = countryList.get(position).getCountryName();
+
+                    if(getActivity() instanceof MainActivity){
+                        Intent intent = new Intent(getActivity(), WeatherActivity.class);
+                        intent.putExtra("weather_id",weatherId);
+                        intent.putExtra("CountryName",CountryName);
+                        startActivity(intent);
+                        getActivity().finish();
+                    }else if(getActivity() instanceof WeatherActivity){
+                        WeatherActivity activity = (WeatherActivity)getActivity();
+                        activity.drawerLayout.closeDrawers();
+                        activity.requestWeather()
+                    }
+
                 }
             }
         });

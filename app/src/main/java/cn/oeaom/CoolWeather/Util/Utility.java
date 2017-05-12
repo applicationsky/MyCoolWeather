@@ -2,10 +2,13 @@ package cn.oeaom.CoolWeather.Util;
 
 import android.text.TextUtils;
 
+import com.google.gson.Gson;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import cn.oeaom.CoolWeather.GSON.Weather;
 import cn.oeaom.CoolWeather.JavaBeanForDB.City;
 import cn.oeaom.CoolWeather.JavaBeanForDB.Country;
 import cn.oeaom.CoolWeather.JavaBeanForDB.Province;
@@ -15,6 +18,20 @@ import cn.oeaom.CoolWeather.JavaBeanForDB.Province;
  */
 
 public class Utility {
+
+    public static Weather handleWeatherResponse(String response){
+        try {
+            JSONObject jsonObject = new JSONObject();
+            JSONArray jsonArray = jsonObject.getJSONArray("HeWeather");
+            String weatherContent = jsonArray.getJSONObject(0).toString();
+            return new Gson().fromJson(weatherContent,Weather.class);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
     public static boolean handleProvinceResponse(String response)
     {
         if(!TextUtils.isEmpty(response))
