@@ -53,6 +53,9 @@ public class WeatherActivity extends AppCompatActivity {
 
         measure.setTypeface(fontFace);
 
+
+
+        
         TextView measure2 = (TextView)findViewById(R.id.degree_measure2);
 
         measure2.setTypeface(fontFace);
