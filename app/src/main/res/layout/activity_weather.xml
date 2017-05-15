@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    android:background="@drawable/background"
-    tools:context="cn.oeaom.CoolWeather.WeatherActivity">
+
+    <!--android:background="@drawable/background"-->
+
     <android.support.v4.widget.DrawerLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/drawer_layout"
@@ -16,7 +11,8 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:background="#0F0"
             >
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -29,7 +25,7 @@
                     android:id="@+id/title_text_weather"
                     android:layout_centerInParent="true"
                     android:textColor="#fff"
-                    android:textSize="20sp"
+                    android:textSize="30sp"
                     />
                 <Button
                     android:id="@+id/btn_home"
@@ -41,8 +37,116 @@
                     android:background="@drawable/ic_home"
                     />
             </RelativeLayout>
-            
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#0ff"
+                >
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#af1"
+                    android:gravity="end"
+
+                   >
+                <TextView
+                    android:id="@+id/degree_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:typeface="serif"
+                    android:textColor="#fff"
+                    android:textSize="120sp"
+                    android:text="00"
+                    />
+                    <TextView
+                        android:id="@+id/degree_text2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:typeface="serif"
+                        android:textColor="#fff"
+                        android:textSize="50sp"
+                        android:text="°"
+                        />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/weather_info_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:textColor="#fff"
+                    android:textSize="50sp"
+                    android:text="多云"
+                    />
+
+                
+            </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFF"
+        android:gravity="bottom"
+        >
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.17"
+                android:background="#936"
+                >
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.17"
+                android:background="#772"
+                >
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.17"
+                android:background="#891"
+                >
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.17"
+                android:background="#550"
+                >
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.17"
+                android:background="#390"
+                >
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.17"
+                android:background="#f60"
+                >
+            </LinearLayout>
+    </LinearLayout>
         </LinearLayout>
+
         <fragment
             android:id="@+id/choose_area_fragment"
             android:name = "cn.oeaom.CoolWeather.ChooseAreaFragment"
@@ -50,14 +154,8 @@
             android:layout_width="match_parent"
             android:layout_gravity="start"
             />
+
+
     </android.support.v4.widget.DrawerLayout>
 
-    <!--<android.support.design.widget.FloatingActionButton-->
-        <!--android:id="@+id/fab"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_gravity="bottom|end"-->
-        <!--android:layout_margin="@dimen/fab_margin"-->
-        <!--app:srcCompat="@android:drawable/ic_dialog_email" />-->
 
-</android.support.design.widget.CoordinatorLayout>

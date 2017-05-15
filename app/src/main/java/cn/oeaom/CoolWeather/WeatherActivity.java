@@ -1,6 +1,7 @@
 package cn.oeaom.CoolWeather;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -34,6 +35,30 @@ public class WeatherActivity extends AppCompatActivity {
 //                        .setAction("Action", null).show();
 //            }
 //        });
+
+
+        Typeface fontFace = Typeface.createFromAsset(getAssets(), "fonts/thin.ttf");
+        // 字体文件必须是true type font的格式(ttf)；
+        // 当使用外部字体却又发现字体没有变化的时候(以 Droid Sans代替)，通常是因为
+        // 这个字体android没有支持,而非你的程序发生了错误
+        TextView text = (TextView)findViewById(R.id.degree_text);
+
+        text.setTypeface(fontFace);
+
+        TextView degre2 = (TextView)findViewById(R.id.degree_text2);
+
+        degre2.setTypeface(fontFace);
+
+        TextView weatherInfo = (TextView)findViewById(R.id.weather_info_text);
+
+        weatherInfo.setTypeface(fontFace);
+
+
+
+
+        //
+        //text.setTextSize(50);
+
         Intent intent=getIntent();
         //获取这个Intent对象的Extra中对应键的值
         String weatherId=intent.getStringExtra("weather_id");
@@ -41,6 +66,8 @@ public class WeatherActivity extends AppCompatActivity {
          tvTitle = (TextView)findViewById(R.id.title_text_weather);
         //tvTitle.setText(weatherId);
         tvTitle.setText(CountryName);
+       // tvTitle.setTextSize(60);
+        tvTitle.setTypeface(fontFace);
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
 
             Button btnBack = (Button)findViewById(R.id.btn_home);
