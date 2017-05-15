@@ -3,6 +3,7 @@ package cn.oeaom.CoolWeather;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.media.Image;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
@@ -88,6 +89,9 @@ public class WeatherActivity extends AppCompatActivity {
         weatherType = (TextView)findViewById(R.id.weather_info_text);
 
         weatherType.setTypeface(fontFace);
+
+        weatherStat = (ImageView)findViewById(R.id.weatherIcon);
+
 //
 //        TextView weatherInfo = (TextView)findViewById(R.id.weather_info_text);
 //
@@ -184,6 +188,69 @@ public class WeatherActivity extends AppCompatActivity {
         });
         //loadBingPic();
     }
+
+    private int findWeatherIconByName(String weatherName)
+    {
+        switch(weatherName)
+        {
+            case "晴":return R.drawable.a044;
+            case "多云":return R.drawable.a045;
+            case "少云":return R.drawable.a046;
+            case "晴间多云":return R.drawable.a047;
+            case "阴":return R.drawable.a048;
+            case "有风":return R.drawable.a049;
+            case "平静":return R.drawable.a050;
+            case "微风":return R.drawable.a000;
+            case "和风":return R.drawable.a001;
+            case "清风":return R.drawable.a002;
+            case "强风":return R.drawable.a003;
+            case "劲风":return R.drawable.a003;
+            case "大风":return R.drawable.a004;
+            case "烈风":return R.drawable.a005;
+            case "风暴":return R.drawable.a006;
+            case "狂爆风":return R.drawable.a007;
+            case "龙卷风":return R.drawable.a008;
+            case "热带风暴":return R.drawable.a009;
+            case "阵雨":return R.drawable.a012;
+            case "强阵雨":return R.drawable.a013;
+            case "雷阵雨":return R.drawable.a014;
+            case "强雷阵雨":return R.drawable.a015;
+            case "雷阵雨伴有冰雹":return R.drawable.a016;
+            case "小雨":return R.drawable.a017;
+            case "中雨":return R.drawable.a018;
+            case "大雨":return R.drawable.a019;
+            case "极端降雨":return R.drawable.a020;
+            case "毛毛雨":return R.drawable.a021;
+            case "细雨":return R.drawable.a021;
+            case "暴雨":return R.drawable.a022;
+            case "大暴雨":return R.drawable.a023;
+            case "特大暴雨":return R.drawable.a024;
+            case "冻雨":return R.drawable.a025;
+            case "小雪":return R.drawable.a026;
+            case "中雪":return R.drawable.a027;
+            case "大雪":return R.drawable.a028;
+            case "暴雪":return R.drawable.a029;
+            case "雨夹雪":return R.drawable.a030;
+            case "雨雪天气":return R.drawable.a031;
+            case "阵雨夹雪":return R.drawable.a032;
+            case "阵雪":return R.drawable.a033;
+            case "薄雾":return R.drawable.a034;
+            case "雾":return R.drawable.a035;
+            case "霾":return R.drawable.a036;
+            case "扬沙":return R.drawable.a037;
+            case "浮尘":return R.drawable.a038;
+            case "沙尘暴":return R.drawable.a039;
+            case "热":return R.drawable.a041;
+            case "冷":return R.drawable.a042;
+            case "强沙尘暴":return R.drawable.a040;
+            case "未知":return R.drawable.a043;
+            default:{
+                break;
+            }
+        }
+        return -1;
+    }
+
     private void showWeatherInfo(Weather weather) {
         String cityName = weather.basic.cityName;
         String updateTime = weather.basic.update.updateTime.split(" ")[1];
@@ -193,6 +260,7 @@ public class WeatherActivity extends AppCompatActivity {
         weatherTime.setText(updateTime);
         weatherDegree.setText(degree);
         weatherType.setText(weatherInfo);
+        weatherStat.setImageResource(findWeatherIconByName(weatherInfo));
 //        forecastLayout.removeAllViews();
 //        for (Forecast forecast : weather.forecastList) {
 //            View view = LayoutInflater.from(this).inflate(R.layout.forecast_item, forecastLayout, false);
