@@ -12,21 +12,21 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#0F0"
+            android:background="#0c445b"
             >
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="#00000000"
                 >
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/title_text_weather"
-                    android:layout_centerInParent="true"
-                    android:textColor="#fff"
-                    android:textSize="30sp"
-                    />
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:id="@+id/title_text_weather"-->
+                    <!--android:layout_centerInParent="true"-->
+                    <!--android:textColor="#fff"-->
+                    <!--android:textSize="30sp"-->
+                    <!--/>-->
                 <Button
                     android:id="@+id/btn_home"
                     android:layout_width="25dp"
@@ -38,122 +38,181 @@
                     />
             </RelativeLayout>
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#0ff"
-                >
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#af1"
-                    android:gravity="end"
-
-                   >
-                <TextView
-                    android:id="@+id/degree_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:typeface="serif"
-                    android:textColor="#fff"
-                    android:textSize="120sp"
-                    android:text="00"
-                    />
-                    <TextView
-                        android:id="@+id/degree_text2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="end"
-                        android:typeface="serif"
-                        android:textColor="#fff"
-                        android:textSize="50sp"
-                        android:text="°"
-                        />
-
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/weather_info_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:textColor="#fff"
-                    android:textSize="50sp"
-                    android:text="多云"
-                    />
-
-                
-            </LinearLayout>
+<!--======================================================天气内容区域============================================================-->
 
     <LinearLayout
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#FFF"
-        android:gravity="bottom"
+        android:layout_height="wrap_content"
+        android:background="#0c445b"
+        android:gravity=""
         >
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="#00000000"
+            android:gravity="center"
+            >
+            <ImageView
+                android:tint="#FFF"
+                android:src="@drawable/a044"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </ImageView>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#0c445b"
+            android:gravity="center"
+            >
+            <TextView
+                android:id="@+id/weather_info_time"
+                android:paddingTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:textColor="#fff"
+                android:textSize="25sp"
+                android:text="THURSDAY 03:00 AM"
+                />
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.17"
-                android:background="#936"
+                android:layout_height="wrap_content"
+                android:background="#0c445b"
+                android:gravity="start"
                 >
+                <TextView
+                    android:id="@+id/degree_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:typeface="serif"
+                    android:textColor="#fff"
+                    android:textSize="90sp"
+                    android:text="00"
+                    />
+                <TextView
+                    android:id="@+id/degree_measure"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:typeface="serif"
+                    android:textColor="#fff"
+                    android:textSize="20sp"
+                    android:text="°"
+                    />
+                <TextView
+                    android:id="@+id/degree_measure2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:typeface="serif"
+                    android:textColor="#fff"
+                    android:textSize="40sp"
+                    android:text="C"
+                    />
             </LinearLayout>
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.17"
-                android:background="#772"
-                >
-            </LinearLayout>
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.17"
-                android:background="#891"
-                >
-            </LinearLayout>
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.17"
-                android:background="#550"
-                >
-            </LinearLayout>
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.17"
-                android:background="#390"
-                >
-            </LinearLayout>
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.17"
-                android:background="#f60"
-                >
-            </LinearLayout>
-    </LinearLayout>
+            <TextView
+                android:id="@+id/weather_info_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:textColor="#fff"
+                android:textSize="25sp"
+                android:text="多云"
+                />
+            <TextView
+                android:id="@+id/weather_info_place"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="15dp"
+                android:layout_gravity="start"
+                android:textColor="#fff"
+                android:textSize="25sp"
+                android:text="佳木斯"
+                />
         </LinearLayout>
 
-        <fragment
-            android:id="@+id/choose_area_fragment"
-            android:name = "cn.oeaom.CoolWeather.ChooseAreaFragment"
-            android:layout_height="match_parent"
-            android:layout_width="match_parent"
-            android:layout_gravity="start"
-            />
+
+    </LinearLayout>
+
+
+
+
+
+
+
+<!--======================================================天气内容区域============================================================-->
+
+
+             <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#FFF"
+                    android:gravity="bottom"
+                    >
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.17"
+                            android:background="#0c4065"
+                            >
+                        </LinearLayout>
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.17"
+                            android:background="#0e4a6e"
+                            >
+                        </LinearLayout>
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.17"
+                            android:background="#105477"
+                            >
+                        </LinearLayout>
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.17"
+                            android:background="#116081"
+                            >
+                        </LinearLayout>
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.17"
+                            android:background="#198a98"
+                            >
+                        </LinearLayout>
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.17"
+                            android:background="#1daf8a"
+                            >
+                        </LinearLayout>
+                </LinearLayout>
+
+ </LinearLayout>
+
+                <fragment
+                    android:id="@+id/choose_area_fragment"
+                    android:name = "cn.oeaom.CoolWeather.ChooseAreaFragment"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:layout_gravity="start"
+                    />
 
 
     </android.support.v4.widget.DrawerLayout>

@@ -19,7 +19,7 @@ import org.w3c.dom.Text;
 public class WeatherActivity extends AppCompatActivity {
     private static final String TAG = "WeatherActivity";
     public DrawerLayout drawerLayout;
-    public TextView tvTitle;
+    //public TextView tvTitle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,17 +41,33 @@ public class WeatherActivity extends AppCompatActivity {
         // 字体文件必须是true type font的格式(ttf)；
         // 当使用外部字体却又发现字体没有变化的时候(以 Droid Sans代替)，通常是因为
         // 这个字体android没有支持,而非你的程序发生了错误
-        TextView text = (TextView)findViewById(R.id.degree_text);
+        TextView weatherTime = (TextView)findViewById(R.id.weather_info_time);
 
-        text.setTypeface(fontFace);
+        weatherTime.setTypeface(fontFace);
+//
+        TextView weatherDegree = (TextView)findViewById(R.id.degree_value);
 
-        TextView degre2 = (TextView)findViewById(R.id.degree_text2);
+        weatherDegree.setTypeface(fontFace);
 
-        degre2.setTypeface(fontFace);
+        TextView measure = (TextView)findViewById(R.id.degree_measure);
 
-        TextView weatherInfo = (TextView)findViewById(R.id.weather_info_text);
+        measure.setTypeface(fontFace);
 
-        weatherInfo.setTypeface(fontFace);
+        TextView measure2 = (TextView)findViewById(R.id.degree_measure2);
+
+        measure2.setTypeface(fontFace);
+
+        TextView weatherPlace = (TextView)findViewById(R.id.weather_info_place);
+
+        weatherPlace.setTypeface(fontFace);
+
+        TextView weatherType = (TextView)findViewById(R.id.weather_info_text);
+
+        weatherType.setTypeface(fontFace);
+//
+//        TextView weatherInfo = (TextView)findViewById(R.id.weather_info_text);
+//
+//        weatherInfo.setTypeface(fontFace);
 
 
 
@@ -63,11 +79,11 @@ public class WeatherActivity extends AppCompatActivity {
         //获取这个Intent对象的Extra中对应键的值
         String weatherId=intent.getStringExtra("weather_id");
         String CountryName = intent.getStringExtra("CountryName");
-         tvTitle = (TextView)findViewById(R.id.title_text_weather);
-        //tvTitle.setText(weatherId);
-        tvTitle.setText(CountryName);
-       // tvTitle.setTextSize(60);
-        tvTitle.setTypeface(fontFace);
+//         tvTitle = (TextView)findViewById(R.id.title_text_weather);
+//        //tvTitle.setText(weatherId);
+//        tvTitle.setText(CountryName);
+//       // tvTitle.setTextSize(60);
+//        tvTitle.setTypeface(fontFace);
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
 
             Button btnBack = (Button)findViewById(R.id.btn_home);
@@ -82,8 +98,8 @@ public class WeatherActivity extends AppCompatActivity {
                 }
             });
     }
-    public void requestWeather(final String weatherId){
-        tvTitle.setText(weatherId);
-    }
+//    public void requestWeather(final String weatherId){
+//        tvTitle.setText(weatherId);
+//    }
 
 }
