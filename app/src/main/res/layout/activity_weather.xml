@@ -55,6 +55,7 @@
             android:gravity="center"
             >
             <ImageView
+                android:padding="15dp"
                 android:id="@+id/weatherIcon"
                 android:tint="#FFF"
                 android:src="@drawable/a044"
@@ -100,16 +101,16 @@
                     android:id="@+id/degree_measure"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:typeface="serif"
+                    android:typeface="sans"
                     android:textColor="#fff"
-                    android:textSize="20sp"
+                    android:textSize="30sp"
                     android:text="°"
                     />
                 <TextView
                     android:id="@+id/degree_measure2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:typeface="serif"
+                    android:typeface="sans"
                     android:textColor="#fff"
                     android:textSize="40sp"
                     android:text="C"
@@ -128,7 +129,7 @@
                 android:id="@+id/weather_info_place"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingBottom="15dp"
+                android:paddingBottom="60dp"
                 android:layout_gravity="start"
                 android:textColor="#fff"
                 android:textSize="25sp"

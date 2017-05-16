@@ -62,7 +62,7 @@ public class WeatherActivity extends AppCompatActivity {
 //                        .setAction("Action", null).show();
 //            }
 //        });
-        Typeface fontFace = Typeface.createFromAsset(getAssets(), "fonts/thin.ttf");
+        Typeface fontFace = Typeface.createFromAsset(getAssets(), "fonts/AndroidClock.ttf");
         // 字体文件必须是true type font的格式(ttf)；
         // 当使用外部字体却又发现字体没有变化的时候(以 Droid Sans代替)，通常是因为
         // 这个字体android没有支持,而非你的程序发生了错误
@@ -76,19 +76,19 @@ public class WeatherActivity extends AppCompatActivity {
 
         TextView measure = (TextView)findViewById(R.id.degree_measure);
 
-        measure.setTypeface(fontFace);
+       // measure.setTypeface(fontFace);
 
         measure2 = (TextView)findViewById(R.id.degree_measure2);
 
-        measure2.setTypeface(fontFace);
+        //measure2.setTypeface(fontFace);
 
         weatherPlace = (TextView)findViewById(R.id.weather_info_place);
 
-        weatherPlace.setTypeface(fontFace);
+        //weatherPlace.setTypeface(fontFace);
 
         weatherType = (TextView)findViewById(R.id.weather_info_text);
 
-        weatherType.setTypeface(fontFace);
+        //weatherType.setTypeface(fontFace);
 
         weatherStat = (ImageView)findViewById(R.id.weatherIcon);
 
